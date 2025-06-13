@@ -1,36 +1,21 @@
 import ResturantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import Shimmer from "./Shimmer";
+import useFetchRes from "../utils/useFetchRes";
+import { Link } from "react-router";
 
 const Body = () => {
-  const [restaurants, setRestaurants] = useState([]);
-  const [filterRes, setFilterRes] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const restaurants = useFetchRes();
+  const [filterRes, setFilterRes] = useState([]);
 
   useEffect(() => {
-    fetchRestaurants();
-  }, []);
+    setFilterRes(restaurants);
+  }, [restaurants]);
 
-  // Simulating an API call to fetch restaurant data
-  const fetchRestaurants = async () => {
-    // In a real application, you would fetch data from an API
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5121551&lng=77.3912953&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    // Here we are using the mock data directly
-    setRestaurants(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilterRes(
-      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
-  if (filterRes.length === 0) {
-    return <Shimmer />;
-  }
-
-  return (
+  return filterRes.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body-container">
       <div className="flex gap-8 ml-2 my-4">
         <div>
@@ -66,7 +51,12 @@ const Body = () => {
       </div>
       <div className="flex flex-wrap justify-start gap-3 px-2">
         {filterRes.map((restaurant) => (
-          <ResturantCard key={restaurant?.info?.id} resList={restaurant} />
+          <Link
+            to={"restaurant/" + restaurant?.info?.id}
+            key={restaurant?.info?.id}
+          >
+            <ResturantCard resList={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
