@@ -3,6 +3,7 @@ import { Link } from "react-router";
 
 const ResturantCard = (props) => {
   const resList = props.resList;
+  console.log(resList);
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
     resList?.info;
   return (
