@@ -1,13 +1,14 @@
 import { RES_IMAGES } from "../utils/constants";
-import { Link } from "react-router";
 
 const ResturantCard = (props) => {
   const resList = props.resList;
-  console.log(resList);
   const { cloudinaryImageId, name, cuisines, avgRating, costForTwo } =
     resList?.info;
   return (
-    <div className="break-words w-60 bg-gray-100 p-3 rounded-2xl hover:bg-gray-200">
+    <div
+      className="break-words w-60 bg-gray-100 p-3 rounded-2xl hover:bg-gray-200"
+      data-testid="res-card"
+    >
       <img
         src={RES_IMAGES + cloudinaryImageId}
         alt="Restaurant"

@@ -19,9 +19,10 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body-container">
-      <div className="flex gap-8 ml-2 my-4 justify-between">
+      <div className="flex mx-3 my-4 justify-between">
         <div>
           <input
+            data-testid="search-input"
             type="text"
             placeholder="Search for restaurants"
             value={searchText}
@@ -55,11 +56,11 @@ const Body = () => {
           className="bg-gray-300 border px-3"
           onClick={() => {
             setFilterRes(
-              restaurants.filter((value) => value.info.avgRating > 4)
+              restaurants.filter((value) => value.info.avgRating > 4.4)
             );
           }}
         >
-          Filter above 4 star
+          Filter above 4.4 star
         </button>
       </div>
       <div className="flex flex-wrap justify-start gap-3 px-2">

@@ -1,5 +1,4 @@
 import RestaurantMenuItems from "./RestaurantMenuItems";
-import { useState } from "react";
 
 const restaurantSubMenu = ({ item, showMenu, setShowIndex }) => {
   return (
