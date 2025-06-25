@@ -7,7 +7,7 @@ import RestaurantSubMenu from "./RestaurantSubMenu";
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useResMenu(resId);
-  const [showIndex, setShowIndex] = useState(0);
+  const [showIndex, setShowIndex] = useState(null);
   let prevIndex = 0;
 
   if (resInfo === null) return <Shimmer />;

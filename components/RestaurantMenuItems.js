@@ -10,10 +10,11 @@ const RestaurantMenuItems = ({ menuItems }) => {
   return !menuItems || menuItems.length === 0 ? (
     ""
   ) : (
-    <div className="">
+    <div>
       {menuItems.map((item) => (
         <div
           key={item?.card?.info?.id}
+          data-testid="sub-menu-item"
           className="flex justify-between mb-3 p-3 border-b border-gray-400"
         >
           <div className="w-9/12">

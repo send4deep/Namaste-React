@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 import Mock_Data from "../MockData/BodyResDataMock.json";
 import { act } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { expect } from "@jest/globals";
+import { expect, jest } from "@jest/globals";
 
 global.fetch = jest.fn(() => {
   return Promise.resolve({
