@@ -6,7 +6,6 @@ import { useEffect } from "react";
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.item);
   const dispatch = useDispatch();
-  console.log(cartItems);
   return (
     <div className="text-center">
       <h1 className="text-lg font-bold mb-2">Cart Items</h1>
@@ -19,7 +18,7 @@ const Cart = () => {
       {cartItems.length === 0 && (
         <h2>Cart is Empty. Please select any item to reflect on cart page.</h2>
       )}
-      <div className="flex w-8/12 m-auto flex-col">
+      <div className="flex w-8/12 m-auto flex-col text-left">
         <RestaurantMenuItems menuItems={cartItems} />
       </div>
     </div>
